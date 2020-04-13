@@ -17,4 +17,16 @@ connection.connect(function(err){
     if(err) throw err;
 
     console.log("connected as id: "+ connection.threadId);
+    listProducts();
 })
+
+function listProducts(){
+    connection.query("SELECT item_id, product_name, price FROM products", function(err, res){
+        if (err) throw err;
+        console.table(res);
+    });
+}
+    
+    
+
+    
