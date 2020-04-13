@@ -18,6 +18,24 @@ connection.connect(function(err){
 
     console.log("connected as id: "+ connection.threadId);
     listProducts();
+    inquirer.prompt([
+        {
+         type: "input",
+         name:"id",
+         message:"What is the ID # of the product you wish to purchase?"
+        },
+        {
+         type: "input",
+         name:"quantity",
+         message:"How many units would you like to purchase?"
+        },
+    ]).then(function(answer){
+        console.log(answer.id,answer.quantity)
+        connection.query("SELECT stock_quantity FROM products WHERE ?", {item_id: answer.id}, function(err,res){
+            if(err) throw err;
+            console.log(res[0].stock_quantity);
+        })
+    })
 })
 
 function listProducts(){
