@@ -30,10 +30,10 @@ connection.connect(function(err){
          message:"How many units would you like to purchase?"
         },
     ]).then(function(answer){
-        console.log("id of item requested : " + answer.id, "\namount requested: " + answer.quantity)
+        let item = answer.id;
+        let amount = answer.quantity
         connection.query("SELECT stock_quantity FROM products WHERE ?", {item_id: answer.id}, function(err,res){
             if(err) throw err;
-            console.log(res[0].stock_quantity);
             let stock = res[0].stock_quantity
             if(answer.quantity>stock){
                 console.log("Insufficient quantity!")
@@ -41,7 +41,13 @@ connection.connect(function(err){
             else{ 
                 connection.query("UPDATE products SET ? WHERE ? ", [{stock_quantity:stock-answer.quantity},{item_id:answer.id}], function(err,res){
                     if (err) throw err;
-                    console.log("You bought this thang(s)!")
+                    connection.query("SELECT price FROM products WHERE ?", {item_id:answer.id}, function (err,res){
+                        if(err) throw err;
+                        let price = res[0].price
+                        console.log("Your total bill is: $"+ price * amount );
+                    })
+                    
+                    console.log(res.affectedRows,"You bought this thang(s)!")
                 })
                 }
         })
