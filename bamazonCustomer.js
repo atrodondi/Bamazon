@@ -28,7 +28,6 @@ connection.connect(function(err){
 function listProducts(){
     connection.query("SELECT item_id, product_name, price FROM products", function(err, res){
         if (err) throw err;
-        console.log(res);
         console.table(res);
     });
 }
