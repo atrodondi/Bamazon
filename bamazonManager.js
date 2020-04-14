@@ -42,7 +42,10 @@ function mainMenu(){
                 })
                 break;
             case "View Low Inventory":
-                console.log("what we gotta buy?");
+                connection.query("SELECT product_name, stock_quantity FROM products WHERE stock_quantity<5",function(err,res){
+                    if (err) throw err;
+                    console.table(res);
+                })
                 break;
             case "Add to Inventory":
                 console.log("add this mang");
