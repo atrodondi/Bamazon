@@ -48,7 +48,30 @@ function mainMenu(){
                 })
                 break;
             case "Add to Inventory":
-                console.log("add this mang");
+                inquirer.prompt([
+                    {
+                        type:"input",
+                        name:"product",
+                        message: "Which product would you like to add inventory to?"
+                    },
+                    {
+                        type: "input",
+                        name: "amount",
+                        message: "How much inventory would you like to add?"
+                    }
+                ]).then(function(answer){
+                    connection.query("SELECT stock_quantity FROM products WHERE ?", {product_name:answer.product}, function(err,res){
+                        if (err) throw err;
+                         var stock = res[0].stock_quantity;
+                        console.log(stock);
+                        connection.query("UPDATE products SET ? WHERE ?", [{stock_quantity: stock + parseInt(answer.amount)},{product_name:answer.product}], function(err,res){
+                            if (err) throw err;
+                            console.log(answer.product + " inventory increased by " +answer.amount);
+                        })
+
+                    })
+                    
+                })
                 break;
             case "Add New Product":
                 console.log("this is totes new");
