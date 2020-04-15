@@ -19,7 +19,6 @@ var connection = mysql.createConnection({
 connection.connect(function(err){
     if(err) throw err;
 
-    console.log("connected as id: "+ connection.threadId);
     supervisor();
     
 })
@@ -43,7 +42,6 @@ function supervisor(){
                 })
                 break;
             case "Create New Department":
-                console.log("new d");
                 inquirer.prompt([
                     {
                        type: "input",

@@ -23,8 +23,29 @@ Here is a short example of the program in action: https://drive.google.com/file/
     * View Products for Sale
     * View Products that have a quantity lower than 5 (low inventory)
     * Add inventory to any product in the database - *product name is case sensitive*
+    ![manager](https://github.com/atrodondi/Bamazon/blob/master/images/manager.png)
     * Add a New Product to the database
 2. Each time an action is completed as a manager, the mainmenu will pop up so they can do another task.
 
+Here is a short example of the program in action: https://drive.google.com/file/d/1oyJ8tCNJZ2grMuglZA7F80rTYuQlXKVM/view
 
 
+# Supervisor App
+1. Once the program is run, the supervisor will be asked whether they want to:
+    * View Product Sales by Department - this will dynamically compute profits of each department by subtracting over head costs from sales and combining databases to produce a table of data to the supervisor.
+        ![supervisor](https://github.com/atrodondi/Bamazon/blob/master/images/supervisor.png)
+    * Add a New Department to the department database
+
+Here is a short example of the program in action: https://drive.google.com/file/d/1AEAUaHScMXMu9v7v1Z-RSsG_I2o_3ZvB/view
+
+# Why?
+This was a fun way to learn how to read and write to a database all while providing an end user a specific experience whether it be to purchase or to maintain stats or inventory! Very fun project to get feet wet in how an online store or other website/app could function to provide information, store information whether it be for business or for pleasure. Super cool.
+
+# Technologies
+
+* Node.js
+* MySQL Workbench
+* npm packages - mysql, inquirer
+
+# Developer
+ Developed and Maintained by Me, [A. Rodondi](https://github.com/atrodondi) 
