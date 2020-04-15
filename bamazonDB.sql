@@ -1,7 +1,8 @@
+-- creating database
 CREATE DATABASE bamazon;
-
+-- declaring use of newly made database
 USE bamazon;
-
+-- creating products table and the columns in the table
 CREATE TABLE products(
     item_id INT NOT NULL AUTO_INCREMENT,
     product_name VARCHAR(50),
@@ -11,7 +12,7 @@ CREATE TABLE products(
     PRIMARY KEY (item_id)
 
 );
-
+-- putting values into table
 INSERT INTO products(product_name, department_name,price,stock_quantity)
 VALUES ("Phone Case", "Accessories", 12.99, 54);
 INSERT INTO products(product_name, department_name,price,stock_quantity)
@@ -32,5 +33,9 @@ INSERT INTO products(product_name, department_name,price,stock_quantity)
 VALUES ("Napkins", "Paper Prodcuts", 2.99, 378);
 INSERT INTO products(product_name, department_name,price,stock_quantity)
 VALUES ("Salted Almonds", "Food", 6.99, 102 );
+-- shows all items in database
+SELECT * FROM products;
+-- adding products sales column for bonus part
+ALTER TABLE products ADD product_sales INT(10) DEFAULT 0;
 
-SELECT * FROM products
+

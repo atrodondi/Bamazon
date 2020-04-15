@@ -59,10 +59,13 @@ function buy(){
             else{ 
                 connection.query("UPDATE products SET ? WHERE ? ", [{stock_quantity:stock-answer.quantity},{item_id:answer.id}], function(err,res){
                     if (err) throw err;
-                    connection.query("SELECT price FROM products WHERE ?", {item_id:item}, function (err,res){
+                    connection.query("SELECT price,product_sales FROM products WHERE ?", {item_id:item}, function (err,res){
                         if(err) throw err;
+                        let sales = res[0].product_sales
                         let price = res[0].price
-                        console.log("Your total bill is: $"+ price * amount );
+                        let bill = price * amount
+                        console.log("Your total bill is: $"+ bill );
+                    connection.query("UPDATE products SET ? WHERE ?", [{product_sales:sales+bill},{item_id:answer.id}])
                     })
                     
                 })
