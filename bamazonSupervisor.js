@@ -44,6 +44,23 @@ function supervisor(){
                 break;
             case "Create New Department":
                 console.log("new d");
+                inquirer.prompt([
+                    {
+                       type: "input",
+                       name: "name",
+                       message: "New Department Name?"
+                    },
+                    {
+                        type:"input",
+                        name:"cost",
+                        message:"Overhead Costs of New Department?"
+                    }
+                    ]).then(function(answer){
+                        connection.query("INSERT INTO departments (department_name,over_head_costs) VALUES (?,?)",[answer.name,parseInt(answer.cost)],function(err,res){
+                            if (err)throw err;
+                            console.log(answer.name + " department added!");
+                        }) 
+                    })
                 break;
         }
     })

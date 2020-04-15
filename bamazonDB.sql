@@ -1,3 +1,5 @@
+-- dropping database if it exists
+DROP DATABASE bamazon;
 -- creating database
 CREATE DATABASE bamazon;
 -- declaring use of newly made database
@@ -30,11 +32,32 @@ VALUES ("VCR", "Electronics", 18.99, 37);
 INSERT INTO products(product_name, department_name,price,stock_quantity)
 VALUES ("Spatula", "Kitchen Stuff", 13.75, 84);
 INSERT INTO products(product_name, department_name,price,stock_quantity)
-VALUES ("Napkins", "Paper Prodcuts", 2.99, 378);
+VALUES ("Napkins", "Paper Products", 2.99, 378);
 INSERT INTO products(product_name, department_name,price,stock_quantity)
 VALUES ("Salted Almonds", "Food", 6.99, 102 );
 
 -- adding products sales column for bonus part
 ALTER TABLE products ADD product_sales DECIMAL(15,2) default 0;
 
+-- adding in departments table and starter cells
+
+CREATE TABLE departments(
+    department_id INT NOT NULL AUTO_INCREMENT,
+    department_name VARCHAR(50),
+    over_head_costs INT(10),
+    PRIMARY KEY (department_id)
+)
+
+INSERT INTO departments(department_name,over_head_costs)
+VALUES ("Accessories", 4000);
+INSERT INTO departments(department_name,over_head_costs)
+VALUES("Paper Products", 3000);
+INSERT INTO departments(department_name,over_head_costs)
+VALUES ("Electronics", 7000);
+INSERT INTO departments(department_name,over_head_costs)
+VALUES ("Kitchen Stuff", 2000);
+INSERT INTO departments(department_name,over_head_costs)
+VALUES ("Food", 6000);
+INSERT INTO departments(department_name,over_head_costs)
+VALUES ("Other",2500)
 

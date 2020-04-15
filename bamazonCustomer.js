@@ -64,7 +64,7 @@ function buy(){
                         let sales = res[0].product_sales
                         let price = res[0].price
                         let bill = price * amount
-                        console.log("Your total bill is: $"+ bill );
+                        console.log("Purchase Successful! Your total bill is: $"+ bill );
                     connection.query("UPDATE products SET ? WHERE ?", [{product_sales:sales+bill},{item_id:answer.id}])
                     })
                     
