@@ -30,12 +30,17 @@ function supervisor(){
             type:"list",
             name:"menu",
             message: "What to do?",
-            choices: ["View Products by Department","Create New Department"]
+            choices: ["View Product Sales by Department","Create New Department"]
         }
     ]).then(function(answer){
         switch(answer.menu){
-            case "View Products by Department":
-                console.log("VPBD");
+            case "View Product Sales by Department":
+                connection.query( "SELECT department_id,departments.department_name,over_head_costs,SUM(product_sales) AS product_sales, SUM(product_sales)-over_head_costs AS total_profit FROM departments INNER JOIN products on products.department_name = departments.department_name GROUP BY department_id", function(err,res){
+                    if (err) throw err;
+                    console.table(res);
+                    
+                   
+                })
                 break;
             case "Create New Department":
                 console.log("new d");
