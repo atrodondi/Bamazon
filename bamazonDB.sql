@@ -33,9 +33,8 @@ INSERT INTO products(product_name, department_name,price,stock_quantity)
 VALUES ("Napkins", "Paper Prodcuts", 2.99, 378);
 INSERT INTO products(product_name, department_name,price,stock_quantity)
 VALUES ("Salted Almonds", "Food", 6.99, 102 );
--- shows all items in database
-SELECT * FROM products;
+
 -- adding products sales column for bonus part
-ALTER TABLE products ADD product_sales INT(10) DEFAULT 0;
+ALTER TABLE products ADD product_sales DECIMAL(15,2) default 0;
 
 
